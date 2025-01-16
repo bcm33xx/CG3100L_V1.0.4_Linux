@@ -39,9 +39,6 @@ We can conclude that, upon power on, the SoC runs instructions from the beginnin
 # Co-processors
 Defined in [3380_cpu.h](shared/opensource/include/bcm963xx/3380_cpu.h). The Linux kernel [mipsregs.h](https://github.com/torvalds/linux/blob/master/arch/mips/include/asm/mipsregs.h) provides some macro to simplify the access to those co-processors registers.
 
-1. All C0 register is on $22: `#define C0_BCM_CONFIG          $22`
-2. Offset 0, Coprocessor 0 Broadcom Config Register Bits, `read_c0_brcm_config()`
-3. Offset 1, Coprocessor 0 CMT Interrupt Register, `read_c0_brcm_cmt_intr()`
 | Offset | Description                                 | Linux header macro     |
 |--------|---------------------------------------------|----------------------- |
 | 0      | Coprocessor 0 Broadcom Config Register Bits | read_c0_brcm_config    |
