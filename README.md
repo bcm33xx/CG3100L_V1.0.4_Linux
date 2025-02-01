@@ -46,7 +46,14 @@ Defined in [3380_cpu.h](shared/opensource/include/bcm963xx/3380_cpu.h). The Linu
 | 2      | Coprocessor 0 CMT Control Register          | read_c0_brcm_cmt_ctrl  |
 | 3      | Coprocessor 0 CMT Local Register            | read_c0_brcm_cmt_local |
 
-# IO Processors
+# IO Processors (IOP)
+These are some undocumented co-processors that actually exist. The ethernet relies on FPM and MSP, maybe also FAP. 
+
+1. FPM stands for "free pool manager"
+2. MSP stands for "Message Processing Processor"
+3. FAP stands for "Forwarding Assist Processor", possibly used for NAT acceleration.
+
+Some of the base addresses can be found in [3380_map.h#L193](https://github.com/bcm33xx/CG3100L_V1.0.4_Linux/blob/main/shared/broadcom/include/bcm963xx/3380_map.h#L193):
 ```c
     //  IOP's Start Here
     ////////////////////
@@ -76,8 +83,3 @@ Defined in [3380_cpu.h](shared/opensource/include/bcm963xx/3380_cpu.h). The Linu
 ```
 
 So `printf("Error: LAN RX status = %x, token = %08lx\n", MEMORY[0xB8801240] & 0x7FFF, MEMORY[0xB8801240]);` should be accessing 0x15801240.
-
-# Note
-1. FPM stands for "free pool manager"
-2. MSP stands for "Message Processing Processor"
-3. FAP stands for "Forwarding Assist Processor"
