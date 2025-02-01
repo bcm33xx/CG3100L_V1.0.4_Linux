@@ -45,3 +45,39 @@ Defined in [3380_cpu.h](shared/opensource/include/bcm963xx/3380_cpu.h). The Linu
 | 1      | Coprocessor 0 CMT Interrupt Register        | read_c0_brcm_cmt_intr  |
 | 2      | Coprocessor 0 CMT Control Register          | read_c0_brcm_cmt_ctrl  |
 | 3      | Coprocessor 0 CMT Local Register            | read_c0_brcm_cmt_local |
+
+# IO Processors
+```c
+    //  IOP's Start Here
+    ////////////////////
+
+    // Upstream Token Processor
+    #define UTP_BLOCK       0xb4000000   // UTP registers
+    #define UTP_BLOCK_SMISB 0xb8000000   // UTP registers accessed from the SMISB Mips Bus
+
+    // Downstream Token Processor
+    #define DTP_BLOCK       0xb4200000   // DTP registers
+    #define DTP_BLOCK_SMISB 0xb8200000   // DTP registers accessed from the SMISB Mips Bus
+
+    // Forwarding Assist Processor
+    #define FAP_BLOCK       0xb4400000   // FAP registers
+    #define FAP_BLOCK_SMISB 0xb8400000   // FAP registers accessed from the SMISB Mips Bus
+
+    // MPEG Encapsulation Processor
+    #define MEP_BLOCK       0xb4600000   // MEP registers
+    #define MEP_BLOCK_SMISB 0xb8600000   // MEP registers accessed from the SMISB Mips Bus
+
+    // Message Processing Processor
+    #define MSP_BLOCK       0xb5800000   // MSP registers
+    #define MSP_BLOCK_SMISB 0xb8800000   // MSP registers accessed from the SMISB Mips Bus
+
+    //  IOP's End Here
+    ////////////////////
+```
+
+So `printf("Error: LAN RX status = %x, token = %08lx\n", MEMORY[0xB8801240] & 0x7FFF, MEMORY[0xB8801240]);` should be accessing 0x15801240.
+
+# Note
+1. FPM stands for "free pool manager"
+2. MSP stands for "Message Processing Processor"
+3. FAP stands for "Forwarding Assist Processor"
